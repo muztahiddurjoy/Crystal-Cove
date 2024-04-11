@@ -1,11 +1,12 @@
 import {createBrowserRouter} from 'react-router-dom'
-import HomePage from './pages/HomePage'
-import LoginPage from './pages/LoginPage'
-import BookingPage from './pages/BookingPage'
-import RoomPage from './pages/RoomPage'
-import SearchPage from './pages/SearchPage'
-import ProfilePage from './pages/ProfilePage'
-import CommonErrorPage from './pages/CommonErrorPage'
+import React from 'react'
+const HomePage = React.lazy(()=>import('./pages/HomePage'))
+const LoginPage = React.lazy(()=>import('./pages/LoginPage'))
+const BookingPage = React.lazy(()=>import('./pages/BookingPage'))
+const RoomPage = React.lazy(()=>import('./pages/RoomPage'))
+const SearchPage = React.lazy(()=>import('./pages/SearchPage'))
+const ProfilePage = React.lazy(()=> import('./pages/ProfilePage'))
+const CommonErrorPage = React.lazy(()=>import('./pages/CommonErrorPage'))
 export const router = createBrowserRouter([
     {
         path:'/',
