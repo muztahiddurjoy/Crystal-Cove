@@ -1,4 +1,4 @@
-import { Button, Card, Heading, Input, Text } from "@chakra-ui/react"
+import { Button, Card, Input, Text } from "@chakra-ui/react"
 import { useState } from "react"
 
 const LoginForm = () => {
