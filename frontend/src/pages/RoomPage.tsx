@@ -1,4 +1,4 @@
-import { AspectRatio, Box, Flex, GridItem, Image, SimpleGrid, Skeleton, SkeletonText, Text } from "@chakra-ui/react"
+import { AspectRatio, Badge, Box, Button, Circle, Flex, GridItem, Image, SimpleGrid, Skeleton, SkeletonText, Text } from "@chakra-ui/react"
 import Navbar from "../components/Navbar/Navbar"
 import Footer from "../components/Footer/Footer"
 import { useState } from "react"
@@ -9,7 +9,8 @@ const RoomPage = () => {
     name: 'Perl Herbour',
     bath:0,
     beds:0,
-    price: 0
+    price: 0,
+    availableToday:false
   })
   const [desc, setdesc] = useState<string>('')
 
@@ -37,6 +38,9 @@ const RoomPage = () => {
                 </Flex>
                 
             </Flex>
+            <Text color="orange.500" fontWeight={700} fontSize={30}>{details.price} <span style={{color:'gray',fontSize:15,fontWeight:400}}>/night</span></Text>
+            <Badge mt={5} display="flex" alignItems="center" gap={2} p={2} bg={details.availableToday?"green.100":"red.100"} borderRadius={5}><Circle bg={details.availableToday?"green.500":"red.500"} size={3}/> {details.availableToday?"Available Today":"Unavailable Today"}</Badge>
+            <Button bg="orange.400" _hover={{bg:'orange.500'}} color="#fff" mt={3}>Book</Button>
             </Flex>:<Flex direction="column" alignItems="end">
                 <Skeleton height={30} width={300} borderRadius={10}/>
                 <Skeleton height={5} width={200} mt={7} borderRadius={10}/>
