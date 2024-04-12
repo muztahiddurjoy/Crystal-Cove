@@ -2,17 +2,16 @@ import { AspectRatio, Badge, Box, Button, Circle, Flex, GridItem, Image, SimpleG
 import Navbar from "../components/Navbar/Navbar"
 import Footer from "../components/Footer/Footer"
 import { useState } from "react"
-import one from '../assets/rooms/1.jpg'
 const RoomPage = () => {
-  const [image, setimage] = useState<string>(one)
   const [details, setdetails] = useState({
-    name: 'Perl Herbour',
+    name: '',
     bath:0,
     beds:0,
     price: 0,
-    availableToday:false
+    availableToday:false,
+    desc:'',
+    image:''
   })
-  const [desc, setdesc] = useState<string>('')
 
   return (
     <Box>
@@ -20,7 +19,7 @@ const RoomPage = () => {
       <SimpleGrid my={10} px={{base:3,md:20}} column={{base:1,md:2}} gap={{base:5,md:10}}>
         <GridItem>
           <AspectRatio ratio={4/3}>
-            <Image borderRadius={10} src={image} fallback={<Skeleton height={200} width={200} borderRadius={10}/>}/>
+            <Image borderRadius={10} src={details.image} fallback={<Skeleton height={200} width={200} borderRadius={10}/>}/>
           </AspectRatio>
         </GridItem>
         <GridItem>
@@ -50,7 +49,7 @@ const RoomPage = () => {
           </Flex>
         </GridItem>
         <GridItem colSpan={{base:1,md:2}}>
-        {desc?<Text></Text>:<SkeletonText noOfLines={5} height="100%" width="100%"/>}
+        {details.desc?<Text fontSize="small" color="gray.500">{details.desc}</Text>:<SkeletonText noOfLines={5} height="100%" width="100%"/>}
         </GridItem>
       </SimpleGrid>
       <Footer/>

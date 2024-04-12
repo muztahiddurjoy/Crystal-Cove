@@ -25,7 +25,7 @@ export const router = createBrowserRouter([
         element:<RoomPage/>
     },
     {
-        path:'/search/:query',
+        path:'/search',
         element:<SearchPage/>
     },
     {

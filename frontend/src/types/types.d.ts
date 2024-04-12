@@ -7,3 +7,10 @@ type RoomCard = {
     beds:number,
     baths:number
 }
+
+type User = {
+    name:string,
+    email:string,
+    joined:Date,
+    uid:string
+}
