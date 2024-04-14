@@ -1,5 +1,6 @@
 import {createBrowserRouter} from 'react-router-dom'
 import React from 'react'
+import ContactPage from './pages/ContactPage'
 const HomePage = React.lazy(()=>import('./pages/HomePage'))
 const LoginPage = React.lazy(()=>import('./pages/LoginPage'))
 const BookingPage = React.lazy(()=>import('./pages/BookingPage'))
@@ -36,6 +37,10 @@ export const router = createBrowserRouter([
     {
         path:'/user/:id',
         element: <ProfilePage/>
+    },
+    {
+        path:'/contact',
+        element:<ContactPage/>
     },
     {
         path:'*',
