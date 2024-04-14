@@ -4,3 +4,8 @@ type Contact = {
     email:string,
     query:string
 }
+
+type Info = {
+    name:string,
+    url:string
+}
