@@ -9,3 +9,9 @@ type Info = {
     name:string,
     url:string
 }
+
+type Review = {
+    name:string,
+    image:string,
+    text:string
+}
