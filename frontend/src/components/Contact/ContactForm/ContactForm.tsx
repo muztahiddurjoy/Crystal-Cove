@@ -1,5 +1,7 @@
 import { Box, Button, Flex, FormLabel, GridItem, Input, SimpleGrid, Text, Textarea } from "@chakra-ui/react"
+import axios from "axios"
 import { useState } from "react"
+import { apiurl } from "../../../apiurl"
 
 
 const ContactForm = () => {
@@ -11,7 +13,25 @@ const ContactForm = () => {
         text:''
     })
     const sendData  = ()=>{
-
+        setisLoading(true)
+        axios.post(`${apiurl}/contact`,{
+            name:response.name,
+            phone:response.phone,
+            email:response.email,
+            query:response.text
+        }).then((res)=>{
+            if(res.status==201){
+                setresponse({
+                    name:'',
+                    phone:'',
+                    email:'',
+                    text:''
+                })
+                setisLoading(false)
+            }
+        }).catch((err)=>{
+            console.log(err)
+        })
     }
   return (
     <Box p={{base:5,md:10}}>
@@ -33,7 +53,7 @@ const ContactForm = () => {
                 <FormLabel color="orange.400">Text</FormLabel>
                 <Textarea rows={5} value={response.text} onChange={(e)=>setresponse({...response,text:e.target.value})} _focus={{borderColor:'orange.500'}} placeholder="Your Message"/>
                 <Flex mt={3} justifyContent="flex-end">
-                    <Button loadingText="Submitting" isLoading={isLoading} bg="orange.400" color="white" _hover={{bg: "orange.500"}}>Submit</Button>
+                    <Button onClick={sendData} loadingText="Submitting" isLoading={isLoading} bg="orange.400" color="white" _hover={{bg: "orange.500"}}>Submit</Button>
                 </Flex>
             </GridItem>
         </SimpleGrid>
