@@ -7,14 +7,19 @@ const RoomPage = React.lazy(()=>import('./pages/RoomPage'))
 const SearchPage = React.lazy(()=>import('./pages/SearchPage'))
 const ProfilePage = React.lazy(()=> import('./pages/ProfilePage'))
 const CommonErrorPage = React.lazy(()=>import('./pages/CommonErrorPage'))
+const SignupPage = React.lazy(()=> import('./pages/SignupPage'))
 export const router = createBrowserRouter([
     {
         path:'/',
         element:<HomePage/>
     },
     {
-        path:'/join',
+        path:'/login',
         element:<LoginPage/>
+    },
+    {
+        path:'/signup',
+        element:<SignupPage/>
     },
     {
         path:'/book',

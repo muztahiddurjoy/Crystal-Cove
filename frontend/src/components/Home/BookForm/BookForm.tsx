@@ -1,6 +1,7 @@
 import { Box, Button, Card, Flex, FormLabel, Input, Select, Stack, Text } from "@chakra-ui/react"
 import sea from '../../../assets/sea.jpg'
 import { useState } from "react";
+import { Link } from "react-router-dom";
 const BookForm = () => {
   const days:Array<string> = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   const [queries, setqueries] = useState({
@@ -29,9 +30,11 @@ const BookForm = () => {
                 {days.map((v,i)=> <option key={i}>{v}</option>)}
               </Select>
             </Box>
-            <Button mt={{base:3,md:0}} bg="orange.400" _hover={{bg:"orange.500"}} color="white">
-              Search
-            </Button>
+            <Link to={`/search?beds=${queries.beds}&baths=${queries.baths}&day=${queries.day}`}>
+              <Button mt={{base:3,md:0}} bg="orange.400" _hover={{bg:"orange.500"}} color="white">
+                Search
+              </Button>
+            </Link>
           </Stack>
         </Card>
     </Flex>

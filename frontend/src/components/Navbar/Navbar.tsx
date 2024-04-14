@@ -10,7 +10,7 @@ const Navbar = () => {
         <Button variant="ghost" color="white" _hover={{bg:"rgba(255,255,255,0.2)"}}>Crystal Cove</Button>
       </Link>
         <Spacer/>
-        {user?<Link to={`/user/${user.uid}`}><Avatar size="sm"/></Link>:<Link to="/join">
+        {user?<Link to={`/user/${user.uid}`}><Avatar size="sm"/></Link>:<Link to="/login">
             <Button size="sm" _hover={{bg:"orange.100", color:"orange.500"}} color="white" variant="outline">Login</Button>
         </Link>}
     </Flex>
