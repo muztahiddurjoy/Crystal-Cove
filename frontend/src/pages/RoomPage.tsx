@@ -4,7 +4,7 @@ import Footer from "../components/Footer/Footer"
 import { useEffect, useState } from "react"
 import axios from "axios"
 import { apiurl } from "../apiurl"
-import { useNavigation, useParams } from "react-router-dom"
+import {  useParams } from "react-router-dom"
 const RoomPage = () => {
   const {id} = useParams()
   const [details, setdetails] = useState({

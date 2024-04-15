@@ -34,3 +34,8 @@ type RoomRequest = {
     price:number,
     image:string
 }
+
+type SearchRequest = {
+    bed:number,
+    bath:number
+}
