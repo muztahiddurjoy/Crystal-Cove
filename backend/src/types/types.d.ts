@@ -25,3 +25,11 @@ type LoginRequest = {
     email:string,
     password?:string
 }
+
+type RoomRequest = {
+    name:string,
+    desc:string,
+    bed:number,
+    bath:number,
+    price:number
+}

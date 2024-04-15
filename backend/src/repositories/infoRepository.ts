@@ -3,8 +3,7 @@ const db = new PrismaClient()
 
 export const addInfoRepository = async (info:InfoRequest)=>{
     try{
-    const information = await db.information.create({data:info})
-    return information
+        return await db.information.create({data:info})
     }
     catch(err){
         return err

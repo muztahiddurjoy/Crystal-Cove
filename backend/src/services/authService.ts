@@ -14,7 +14,7 @@ export const loginService = async (user:LoginRequest) => {
     const result = await compare(user.password!,dbUser?.password!)
     if(result){
         const jwt = sign({uid:dbUser?.uid,email:dbUser?.email},process.env.AUTH_SECRET!)
-        return {token:jwt}
+        return {token:jwt,uid:dbUser?.uid}
     }
     else{
         return {error:'Wrong Password!'}
