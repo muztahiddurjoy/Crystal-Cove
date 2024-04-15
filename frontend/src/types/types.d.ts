@@ -9,8 +9,7 @@ type RoomCard = {
 }
 
 type User = {
-    name:string,
-    email:string,
-    joined:Date,
-    uid:string
+    email?:string,
+    joined?:Date,
+    uid?:string
 }

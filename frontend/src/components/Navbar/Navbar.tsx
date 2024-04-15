@@ -1,9 +1,10 @@
 import { Avatar, Button, Flex, Spacer } from "@chakra-ui/react"
-import { useState } from "react"
+import { useContext } from "react"
 import { Link } from "react-router-dom"
+import { userContext } from "../UserWrapper"
 
 const Navbar = () => {
-  const [user, setuser] = useState<User>()
+  const {user} = useContext(userContext)
   return (
     <Flex p={3} bg="orange.400" alignItems="center" gap={2}>
       <Link to="/">

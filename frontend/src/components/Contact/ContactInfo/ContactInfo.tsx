@@ -5,7 +5,7 @@ import { apiurl } from "../../../apiurl"
 
 const ContactInfo = () => {
   const [info, setinfo] = useState<Array<{name:string,url:string,id:number}>>([])
-
+  
   useEffect(() => {
     axios.get(`${apiurl}/info`).then((res)=>{
       if(res.status==200){
