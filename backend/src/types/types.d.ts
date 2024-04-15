@@ -31,5 +31,6 @@ type RoomRequest = {
     desc:string,
     bed:number,
     bath:number,
-    price:number
+    price:number,
+    image:string
 }

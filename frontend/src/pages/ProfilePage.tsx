@@ -1,4 +1,4 @@
-import { Avatar, Box, GridItem, SimpleGrid, Stack, Text } from "@chakra-ui/react"
+import {  Box, GridItem, SimpleGrid, Stack, Text } from "@chakra-ui/react"
 import Navbar from "../components/Navbar/Navbar"
 import Footer from "../components/Footer/Footer"
 import RoomAdapterSkeleton from "../components/RoomAdapter/RoomAdapterSkeleton"

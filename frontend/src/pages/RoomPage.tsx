@@ -1,8 +1,12 @@
 import { AspectRatio, Badge, Box, Button, Circle, Flex, GridItem, Image, SimpleGrid, Skeleton, SkeletonText, Text } from "@chakra-ui/react"
 import Navbar from "../components/Navbar/Navbar"
 import Footer from "../components/Footer/Footer"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import axios from "axios"
+import { apiurl } from "../apiurl"
+import { useNavigation, useParams } from "react-router-dom"
 const RoomPage = () => {
+  const {id} = useParams()
   const [details, setdetails] = useState({
     name: '',
     bath:0,
@@ -12,6 +16,14 @@ const RoomPage = () => {
     desc:'',
     image:''
   })
+
+  useEffect(() => {
+    axios.get(`${apiurl}/rooms/${id}`).then((res)=>{
+      setdetails(res.data)
+    }).catch((err)=>{
+      console.log(err)
+    })
+  },[])
 
   return (
     <Box>

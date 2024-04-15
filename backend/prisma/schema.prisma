@@ -22,6 +22,7 @@ model Room {
   bed      Int        @default(0)
   bath     Int        @default(0)
   price    Int
+  image    String
   bookings Bookings[]
 }
 
