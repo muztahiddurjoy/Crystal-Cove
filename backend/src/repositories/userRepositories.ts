@@ -5,7 +5,8 @@ export const createUser = async (user:SignupRequest) => {
     try{
         return await db.user.create({data:{email:user.email,password:user.password}})
     }
-    catch(err){
+    catch(err){ 
+        console.log(err)
         return err
     }
 }

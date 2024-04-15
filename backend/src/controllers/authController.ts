@@ -10,5 +10,11 @@ export const signUpController = async (req:Request,res:Response)=>{
 export const loginController = async (req:Request,res:Response)=>{
     const user = req.body
     const result = await loginService(user)
-    res.status(200).json(result)
+    if(result.error){
+        res.status(401).json(result)
+    }
+    else{
+        res.status(200).json(result)
+    }
+    
 }
