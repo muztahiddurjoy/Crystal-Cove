@@ -1,4 +1,4 @@
-import {PrismaClient,Prisma} from '@prisma/client'
+import {PrismaClient} from '@prisma/client'
 const db = new PrismaClient()
 export const getContactsRepository = async ()=>{
     try{
@@ -10,7 +10,7 @@ export const getContactsRepository = async ()=>{
     }
 }
 
-export const createContactRepository = async (contact:Contact)=>{
+export const createContactRepository = async (contact:ContactRequest)=>{
     try{
     const newContact = await db.contact.create({data:contact})
     return newContact

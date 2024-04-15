@@ -1,6 +1,6 @@
 import {addReviewRepository,getReviewRepository} from '../repositories/reviewRepository'
 
-export const addReviewService = async (review:Review) =>{
+export const addReviewService = async (review:ReviewRequest) =>{
     return await addReviewRepository(review)
 }
 

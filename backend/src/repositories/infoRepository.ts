@@ -1,7 +1,7 @@
 import {PrismaClient} from '@prisma/client'
 const db = new PrismaClient()
 
-export const addInfoRepository = async (info:Info)=>{
+export const addInfoRepository = async (info:InfoRequest)=>{
     try{
     const information = await db.information.create({data:info})
     return information

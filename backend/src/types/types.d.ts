@@ -1,17 +1,27 @@
-type Contact = {
+type ContactRequest = {
     name:string,
     phone:string,
     email:string,
     query:string
 }
 
-type Info = {
+type InfoRequest = {
     name:string,
     url:string
 }
 
-type Review = {
+type ReviewRequest = {
     name:string,
     image:string,
     text:string
+}
+
+type SignupRequest = {
+    email:string,
+    password:string
+}
+
+type LoginRequest = {
+    email:string,
+    password?:string
 }

@@ -10,7 +10,7 @@ export const getReviewRepository = async ()  => {
     }
 }
 
-export const addReviewRepository = async (review:Review) =>{
+export const addReviewRepository = async (review:ReviewRequest) =>{
     try{
         return await db.review.create({data:review})
     }
