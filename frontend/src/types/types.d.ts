@@ -17,5 +17,12 @@ type Room = {
     bed:number,
     bath:number,
     price:number,
-    image:string
+    image:string,
+    notBookable?:boolean
+}
+type Booking = {
+    id?:string,
+    date:string,
+    roomID:string,
+    uid:string
 }

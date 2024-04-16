@@ -3,8 +3,7 @@ import { Link } from "react-router-dom"
 import { userContext } from "../UserWrapper"
 import { useContext } from "react"
 
-const RoomAdapter = ({bath,bed,desc,id,name,price,image}:Room) => {
-    const {user} = useContext(userContext)
+const RoomAdapter = ({bath,bed,desc,id,name,price,image,notBookable}:Room) => {
   return (
     <Card>
         <AspectRatio w="100%" ratio={4/3}>
@@ -32,12 +31,14 @@ const RoomAdapter = ({bath,bed,desc,id,name,price,image}:Room) => {
                 
             </Flex>
             <Spacer/>
-            <Flex justifyContent="start" alignItems="center">
-                <Button bg="orange.400" textColor="white" _hover={{bg: "orange.500"}}>Book</Button>
+            {!notBookable&&<Flex justifyContent="start" alignItems="center">
+                <Link to={`/book/${id}`}>
+                    <Button bg="orange.400" textColor="white" _hover={{bg: "orange.500"}}>Book</Button>
+                </Link>
                 <Link to={`/room/${id}`}>
                     <Button variant="outline" textColor="orange.500" borderColor="orange.500" ml={2}>More</Button>
                 </Link>
-            </Flex>
+            </Flex>}
                 
             </CardFooter>
     </Card>

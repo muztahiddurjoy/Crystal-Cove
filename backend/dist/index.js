@@ -10,6 +10,7 @@ const reviewRouter_1 = __importDefault(require("./routers/reviewRouter"));
 const authRouter_1 = __importDefault(require("./routers/authRouter"));
 const roomRouter_1 = __importDefault(require("./routers/roomRouter"));
 const userRouter_1 = __importDefault(require("./routers/userRouter"));
+const bookingRouter_1 = __importDefault(require("./routers/bookingRouter"));
 const passport_1 = __importDefault(require("passport"));
 const checkAuth_1 = require("./middlewares/checkAuth");
 const cors_1 = __importDefault(require("cors"));
@@ -26,6 +27,7 @@ app.use('/info', infoRouter_1.default);
 app.use('/review', reviewRouter_1.default);
 app.use('/rooms', roomRouter_1.default);
 app.use('/user', userRouter_1.default);
+app.use('/booking', bookingRouter_1.default);
 app.listen(8080, () => {
     console.log('listening on port 8080');
 });

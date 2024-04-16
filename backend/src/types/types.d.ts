@@ -39,3 +39,9 @@ type SearchRequest = {
     bed:number,
     bath:number
 }
+
+type BookingRequest = {
+    roomID?:string,
+    uid?:string,
+    date?:string
+}

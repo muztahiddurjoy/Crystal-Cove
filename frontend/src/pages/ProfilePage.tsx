@@ -1,20 +1,37 @@
-import {  Box, GridItem, SimpleGrid, Stack, Text } from "@chakra-ui/react"
+import {  Box, Button, Card, Flex, GridItem, SimpleGrid, Skeleton, Stack, Text } from "@chakra-ui/react"
 import Navbar from "../components/Navbar/Navbar"
 import Footer from "../components/Footer/Footer"
-import RoomAdapterSkeleton from "../components/RoomAdapter/RoomAdapterSkeleton"
 import { useEffect, useState } from "react"
 import axios from "axios"
 import { apiurl } from "../apiurl"
+import { Link } from "react-router-dom"
 
 const ProfilePage = () => {
   const [user, setuser] = useState<User>()
+  const [bookings, setbookings] = useState<Booking[]>([])
+  const [loading, setloading] = useState(false)
 
-  useEffect(() => {
+  const getUserData = ()=>{
     axios.get(`${apiurl}/user/${localStorage.getItem("uid")}`).then((res)=>{
       setuser(res.data)
     }).catch((err)=>{
       console.log(err)
     })
+  }
+
+  const getBookings = ()=>{
+    setloading(true)
+    axios.get(`${apiurl}/booking/user/${localStorage.getItem("uid")}`).then((res)=>{
+      setbookings(res.data)
+      setloading(false)
+    }).catch((err)=>{
+      console.log(err)
+    })
+  }
+
+  useEffect(() => {
+   getUserData()
+   getBookings()
   }, [])
   
   return (
@@ -32,18 +49,19 @@ const ProfilePage = () => {
         </Stack>
         <Text mt={10} fontSize={25} fontWeight={700} color="orange.500">Your Previous Bookings</Text>
         <SimpleGrid columns={{base:1,md:4}} gap={5} mt={5}>
-          <GridItem>
-            <RoomAdapterSkeleton/>
-          </GridItem>
-          <GridItem>
-            <RoomAdapterSkeleton/>
-          </GridItem>
-          <GridItem>
-            <RoomAdapterSkeleton/>
-          </GridItem>
-          <GridItem>
-            <RoomAdapterSkeleton/>
-          </GridItem>
+          {loading?Array(4).fill(0).map(()=> <GridItem>
+            <Skeleton noOfLines={3}/>
+          </GridItem>):bookings.map((v,i)=> <GridItem key={i}>
+              <Card p={3}>
+                <Text>Booked on : {new Date(v.date).toLocaleString()}</Text>
+                <Flex justifyContent="end">
+                  <Link to={`/room/${v.roomID}`}>
+                    <Button size="sm" bg="orange.400" color="white" mt={3} _hover={{bg:'orange.500'}}>View Room</Button>
+                  </Link>
+                </Flex>
+              </Card>
+            </GridItem>)}
+          
         </SimpleGrid>
       </Box>
       <Footer/>

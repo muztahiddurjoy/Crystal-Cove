@@ -23,7 +23,7 @@ export const router = createBrowserRouter([
         element:<SignupPage/>
     },
     {
-        path:'/book',
+        path:'/book/:id',
         element:<BookingPage/>
     },
     {

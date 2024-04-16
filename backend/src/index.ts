@@ -5,6 +5,7 @@ import reviewRouter from './routers/reviewRouter'
 import authRouter from './routers/authRouter'
 import roomRouter from './routers/roomRouter'
 import userRouter from './routers/userRouter'
+import bookingRouter from './routers/bookingRouter'
 import passport from 'passport'
 import {strategy} from './middlewares/checkAuth'
 import cors from 'cors'
@@ -22,6 +23,7 @@ app.use('/info',infoRouter)
 app.use('/review',reviewRouter)
 app.use('/rooms',roomRouter)
 app.use('/user',userRouter)
+app.use('/booking',bookingRouter)
 
 app.listen(8080, () => {
     console.log('listening on port 8080')
