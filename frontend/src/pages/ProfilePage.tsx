@@ -12,7 +12,11 @@ const ProfilePage = () => {
   const [loading, setloading] = useState(false)
 
   const getUserData = ()=>{
-    axios.get(`${apiurl}/user/${localStorage.getItem("uid")}`).then((res)=>{
+    axios.get(`${apiurl}/user`,{
+      headers:{
+        Authorization : `Bearer ${localStorage.getItem('token')}`
+      }
+    }).then((res)=>{
       setuser(res.data)
     }).catch((err)=>{
       console.log(err)
@@ -21,7 +25,7 @@ const ProfilePage = () => {
 
   const getBookings = ()=>{
     setloading(true)
-    axios.get(`${apiurl}/booking/user/${localStorage.getItem("uid")}`,{headers:{
+    axios.get(`${apiurl}/booking/user`,{headers:{
       Authorization: `Bearer ${localStorage.getItem('token')}`
     }}).then((res)=>{
       setbookings(res.data)

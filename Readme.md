@@ -221,7 +221,6 @@ Body
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
 | `roomID`      | `string` | **Required** ID of the room|
-| `uid`      | `string` | **Required** User ID of the user who wants to book the room|
 | `date`      | `string` | **Required** Date in ISO string format|
 
 Headers
@@ -248,12 +247,8 @@ Queries
 
 #### Get All Bookings of a User
 ```http
- GET /booking/user/:uid
+ GET /booking/user
 ```
-Body
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `uid`      | `string` | **Required** User ID of the user|
 
 Headers
 | Parameter | Type     | Description                       |

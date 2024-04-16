@@ -3,7 +3,7 @@ import { createBookingService, getAllBookingsService, getUserBookingService,getB
 
 export const createBookingController = async (req:Request,res:Response)=>{
     const book = req.body
-    const response = await createBookingService(book)
+    const response = await createBookingService({date:book.date,roomID:book.roomID,uid:req.user?.uid})
     res.status(201).json(response)
 }
 
@@ -13,7 +13,7 @@ export const getBookingsController = async (req:Request,res:Response) =>{
 }
 
 export const getUserBookingsController = async (req:Request,res:Response) =>{
-    const response = await getUserBookingService({uid:req.params.uid})
+    const response = await getUserBookingService({uid:req.user?.uid})
     res.status(200).json(response)
 }
 

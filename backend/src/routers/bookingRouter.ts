@@ -4,7 +4,7 @@ import passport from 'passport'
 import { createBookingController, getBookingByDateController, getBookingsController, getUserBookingsController } from '../controllers/bookingController'
 
 router.get('/',passport.authenticate('jwt',{session:false}),getBookingsController)
-router.get('/user/:uid',passport.authenticate('jwt',{session:false}),getUserBookingsController)
+router.get('/user',passport.authenticate('jwt',{session:false}),getUserBookingsController)
 router.get('/date',getBookingByDateController)
 router.post('/',passport.authenticate('jwt',{session:false}),createBookingController)
 

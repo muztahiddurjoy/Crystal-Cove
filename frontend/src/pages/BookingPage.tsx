@@ -81,9 +81,7 @@ const BookingPage = () => {
     getBookings()
   }, [id])
   
-  useEffect(() => {
-    console.log(booked)
-  }, [booked])
+  
   
 
   const bookHotel = () =>{
@@ -101,7 +99,6 @@ const BookingPage = () => {
     else{
     setcreating(true)
     axios.post(`${apiurl}/booking`,{
-      uid: localStorage.getItem('uid'),
       roomID: id,
       date: bookDate.toISOString()
     },{

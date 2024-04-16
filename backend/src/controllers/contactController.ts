@@ -3,7 +3,14 @@ import { Request, Response } from 'express'
 import { createContactService, getContactsService } from '../services/contactService'
 
 const db = new PrismaClient()
-
+declare global{
+    namespace Express{
+    interface User{
+        uid:string,
+        email:string,
+    }
+}
+}
 export const getContactController = async (req:Request, res:Response) => {
    const contacts = await getContactsService()
    res.status(200).json(contacts)
