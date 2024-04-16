@@ -1,7 +1,5 @@
 import { AspectRatio,  Button, Card, CardBody, CardFooter, Divider, Flex, Image, Skeleton, Spacer, Text } from "@chakra-ui/react"
 import { Link } from "react-router-dom"
-import { userContext } from "../UserWrapper"
-import { useContext } from "react"
 
 const RoomAdapter = ({bath,bed,desc,id,name,price,image,notBookable}:Room) => {
   return (

@@ -18,7 +18,7 @@ export const getUserBookingsController = async (req:Request,res:Response) =>{
 }
 
 export const getBookingByDateController = async (req:Request,res:Response) =>{
-    const response = await getBookingOnDateService({date:String(req.query.date)})
+    const response = await getBookingOnDateService({date:String(req.query.date),roomID:String(req.query.roomID)})
     res.status(200).json(response)
 }
 

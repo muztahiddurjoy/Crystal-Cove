@@ -3,7 +3,7 @@ const db = new PrismaClient()
 
 export const createBookingRepository = async (book:BookingRequest)=>{
     try{
-        return await db.bookings.create({data:{uid:book.uid!,roomID:book.roomID!}})
+        return await db.bookings.create({data:{uid:book.uid!,roomID:book.roomID!,date:book.date}})
     }
     catch(err){
         return err
@@ -30,7 +30,8 @@ export const getUserBookingsRepository = async (book:BookingRequest) =>{
 
 export const getBookingsOnDateRepository = async (book:BookingRequest) =>{
     try{
-        return await db.bookings.findMany({where:{date:new Date(book.date!)}})
+        const reqTime = new Date(book.date!).getTime()
+        return (await db.bookings.findMany({where:{roomID:book.roomID}})).filter((v)=> Math.round((new Date(v.date).getTime()-reqTime)/(1000*86400))<1)
     }
     catch(err){
         return err

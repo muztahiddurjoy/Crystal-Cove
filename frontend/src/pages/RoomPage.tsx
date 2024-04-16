@@ -4,7 +4,7 @@ import Footer from "../components/Footer/Footer"
 import { useEffect, useState } from "react"
 import axios from "axios"
 import { apiurl } from "../apiurl"
-import {  useParams } from "react-router-dom"
+import {  Link, useParams } from "react-router-dom"
 const RoomPage = () => {
   const {id} = useParams()
   const [details, setdetails] = useState({
@@ -19,11 +19,31 @@ const RoomPage = () => {
 
   useEffect(() => {
     axios.get(`${apiurl}/rooms/${id}`).then((res)=>{
-      setdetails(res.data)
+      const room = res.data
+      axios.get(`${apiurl}/booking/date?date=${new Date().toISOString()}&roomID=${id}`).then((bookings)=>{
+        if(bookings.status==200){
+          console.log(bookings.data)
+          if(Array.isArray(bookings.data)){
+            if(bookings.data.length==0){
+              setdetails({
+                availableToday:true,
+                ...room,
+              })
+            }
+            else{
+              setdetails({
+                availableToday:false,
+                ...room,
+              })
+            }
+          }
+        }
+      }).catch((err)=> console.log(err))
+      
     }).catch((err)=>{
       console.log(err)
     })
-  },[])
+  },[id])
 
   return (
     <Box>
@@ -51,7 +71,7 @@ const RoomPage = () => {
             </Flex>
             <Text color="orange.500" fontWeight={700} fontSize={30}>{details.price} <span style={{color:'gray',fontSize:15,fontWeight:400}}>/night</span></Text>
             <Badge mt={5} display="flex" alignItems="center" gap={2} p={2} bg={details.availableToday?"green.100":"red.100"} borderRadius={5}><Circle bg={details.availableToday?"green.500":"red.500"} size={3}/> {details.availableToday?"Available Today":"Unavailable Today"}</Badge>
-            <Button bg="orange.400" _hover={{bg:'orange.500'}} color="#fff" mt={3}>Book</Button>
+            <Link to={localStorage.getItem('token')?`/book/${id}`:`/login`}><Button bg="orange.400" _hover={{bg:'orange.500'}} color="#fff" mt={3}>Book</Button></Link>
             </Flex>:<Flex direction="column" alignItems="end">
                 <Skeleton height={30} width={300} borderRadius={10}/>
                 <Skeleton height={5} width={200} mt={7} borderRadius={10}/>
