@@ -59,7 +59,7 @@ const BookingPage = () => {
       }
     }).then((res)=>{
       if(Array.isArray(res.data)){
-        setbooked(res.data.map((v:Booking,i)=> {
+        setbooked(res.data.map((v:Booking)=> {
           console.log((((new Date().getTime()-new Date(v.date).getTime())/1000)/86400))
           if(((((new Date().getTime()-new Date(v.date).getTime())/1000)/86400)<1&&v.roomID==id)){
             console.log(days[new Date(v.date).getDay()])
@@ -67,6 +67,9 @@ const BookingPage = () => {
           }
         }
       ))
+      setbooked((arr)=> arr.filter(function(element) {
+        return element !== undefined;
+      }))
       }
     })
     
