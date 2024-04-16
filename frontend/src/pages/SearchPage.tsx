@@ -35,7 +35,7 @@ const SearchPage = () => {
       <Navbar/>
       <Box my={10} p={{base:3,md:10}}>
         <Text fontSize={30} fontWeight={700} color="orange.500">Search Results</Text>
-        <SimpleGrid mt={5} columns={{base:1,md:4}} gap={5}>
+        <SimpleGrid mt={5} columns={{base:1,md:3}} gap={5}>
           {loading? Array(3).fill(0).map(()=><GridItem>
             <RoomAdapterSkeleton/>
           </GridItem>): rooms.map(((room:Room)=> <GridItem>

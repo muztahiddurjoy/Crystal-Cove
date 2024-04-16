@@ -21,7 +21,9 @@ const ProfilePage = () => {
 
   const getBookings = ()=>{
     setloading(true)
-    axios.get(`${apiurl}/booking/user/${localStorage.getItem("uid")}`).then((res)=>{
+    axios.get(`${apiurl}/booking/user/${localStorage.getItem("uid")}`,{headers:{
+      Authorization: `Bearer ${localStorage.getItem('token')}`
+    }}).then((res)=>{
       setbookings(res.data)
       setloading(false)
     }).catch((err)=>{

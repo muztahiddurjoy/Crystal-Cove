@@ -69,7 +69,7 @@ const SignupForm = () => {
               uid:res.data.uid
             })
             setTimeout(() => {
-              router(-1)
+              router('/')
             }, 2000);
           }
         }).catch((err)=>{
