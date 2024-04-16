@@ -28,6 +28,6 @@ app.use('/review', reviewRouter_1.default);
 app.use('/rooms', roomRouter_1.default);
 app.use('/user', userRouter_1.default);
 app.use('/booking', bookingRouter_1.default);
-app.listen(8080, () => {
-    console.log('listening on port 8080');
+app.listen(process.env.PORT, () => {
+    console.log('listening on port ', process.env.PORT);
 });

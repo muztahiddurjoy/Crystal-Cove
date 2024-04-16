@@ -1,4 +1,4 @@
-import {PrismaClient} from '@prisma/client'
+import {Bookings, PrismaClient} from '@prisma/client'
 const db = new PrismaClient()
 
 export const createBookingRepository = async (book:BookingRequest)=>{
@@ -31,7 +31,7 @@ export const getUserBookingsRepository = async (book:BookingRequest) =>{
 export const getBookingsOnDateRepository = async (book:BookingRequest) =>{
     try{
         const reqTime = new Date(book.date!).getTime()
-        return (await db.bookings.findMany({where:{roomID:book.roomID}})).filter((v)=> Math.round((new Date(v.date).getTime()-reqTime)/(1000*86400))<1)
+        return (await db.bookings.findMany({where:{roomID:book.roomID}})).filter((v:Bookings)=> Math.round((new Date(v.date).getTime()-reqTime)/(1000*86400))<1)
     }
     catch(err){
         return err

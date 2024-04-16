@@ -25,6 +25,6 @@ app.use('/rooms',roomRouter)
 app.use('/user',userRouter)
 app.use('/booking',bookingRouter)
 
-app.listen(8080, () => {
-    console.log('listening on port 8080')
+app.listen(process.env.PORT, () => {
+    console.log('listening on port ',process.env.PORT)
 })
