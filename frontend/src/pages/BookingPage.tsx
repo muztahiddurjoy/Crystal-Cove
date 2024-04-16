@@ -147,7 +147,7 @@ const BookingPage = () => {
               <Box>
               <FormLabel textAlign="right">Day (This Week)</FormLabel>
               <Select value={bookDate?days[bookDate!.getDay()]:'Pick Option'} placeholder={bookDate?days[bookDate!.getDay()]:'Pick Option'} onChange={e=> setbookDate(new Date(Number(e.target.value)))}  borderColor="orange.400" _focus={{borderColor:"orange.500"}} w={200}>
-                {days.map((v:string,i:number)=> ((today.getDay()<=days.indexOf(v))&&!booked.includes(v))&&<option key={new Date().setDate((new Date().getDate()+i)-today.getDay())} value={new Date().setDate((new Date().getDate()+i)-today.getDay())}>{v}</option>)}
+                {days.map((v:string,i:number)=> ((today.getDay()<=days.indexOf(v))&&!booked.includes(v))&&<option key={i} value={new Date().setDate((new Date().getDate()+i)-today.getDay())}>{v}</option>)}
               </Select>
               </Box>
             </Stack>
