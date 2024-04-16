@@ -16,7 +16,7 @@ CREATE TABLE "Room" (
     "bed" INTEGER NOT NULL DEFAULT 0,
     "bath" INTEGER NOT NULL DEFAULT 0,
     "price" INTEGER NOT NULL,
-
+    "image" TEXT NOT NULL,
     CONSTRAINT "Room_pkey" PRIMARY KEY ("id")
 );
 
