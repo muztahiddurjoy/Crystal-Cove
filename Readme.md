@@ -1,5 +1,5 @@
 
-# Typical React Express
+# Crystal Cove
 
 A Typical React & Express app with typesript and Prisma ORM
 
